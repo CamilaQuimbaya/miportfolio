@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useContent } from "@/lib/i18n";
+import { playSound } from "@/lib/sound";
 import CatLogo from "./CatLogo";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -29,6 +30,7 @@ export default function ContactForm() {
       if (data.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "" });
+        playSound("success");
       } else {
         setStatus("error");
       }

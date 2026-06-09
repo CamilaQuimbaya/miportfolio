@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useContent, useLang } from "@/lib/i18n";
 import { useView, type ViewId } from "@/lib/view";
+import { playSound } from "@/lib/sound";
 import CatLogo from "./CatLogo";
 import NavIcon from "./NavIcon";
 
@@ -18,7 +19,10 @@ export default function CatRadialNav() {
   // Cierra con la tecla Esc
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        playSound("close");
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -53,7 +57,10 @@ export default function CatRadialNav() {
             exit={{ scale: 0, opacity: 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.92 }}
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true);
+              playSound("open");
+            }}
             aria-label={lang === "es" ? "Abrir menú de navegación" : "Open navigation menu"}
             className="fixed bottom-6 left-6 z-50 grid h-16 w-16 place-items-center rounded-full glass-strong shadow-glow"
           >
@@ -70,7 +77,10 @@ export default function CatRadialNav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              playSound("close");
+            }}
             className="fixed inset-0 z-[60] grid place-items-center bg-ink/70 backdrop-blur-md"
           >
             {/* Contenedor central (no cierra al hacer clic dentro) */}

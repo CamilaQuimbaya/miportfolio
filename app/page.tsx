@@ -7,6 +7,8 @@ import CatRadialNav from "@/components/CatRadialNav";
 import LoadingScreen from "@/components/LoadingScreen";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 import NavHintToast from "@/components/NavHintToast";
+import SoundToggle from "@/components/SoundToggle";
+import SoundFX from "@/components/SoundFX";
 import { ViewProvider } from "@/lib/view";
 
 export default function Home() {
@@ -21,6 +23,8 @@ export default function Home() {
       <CatRadialNav />
       <NavHintToast />
       <KonamiEasterEgg />
+      <SoundToggle />
+      <SoundFX />
     </ViewProvider>
   );
 }
