@@ -42,7 +42,7 @@ export default function Image() {
             <rect x="9" y="32" width="7" height="11" rx="3.5" fill="#7c3aed" />
             <rect x="48" y="32" width="7" height="11" rx="3.5" fill="#7c3aed" />
           </svg>
-          <div style={{ fontSize: 30, color: "#22d3ee" }}>camila.dev</div>
+          <div style={{ fontSize: 30, color: "#22d3ee" }}>camilaquimbaya.dev</div>
         </div>
 
         <div
@@ -58,11 +58,11 @@ export default function Image() {
         >
           Camila Quimbaya
         </div>
-        <div style={{ fontSize: 40, marginTop: 16, color: "#f5e9ff" }}>
-          Full Stack Dev · UX/UI Designer
+        <div style={{ fontSize: 38, marginTop: 16, color: "#f5e9ff" }}>
+          Full Stack · Tech Lead · UX/UI Designer
         </div>
         <div style={{ fontSize: 30, marginTop: 8, color: "#e0aaff" }}>
-          + Profe de programacion
+          + Profesora de programacion
         </div>
       </div>
     ),
