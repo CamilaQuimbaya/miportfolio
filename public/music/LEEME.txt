@@ -1,0 +1,30 @@
+🎧 MÚSICA DEL PORTAFOLIO
+================================
+
+✅ Sonando ahora: lofi.wav → pista ALEGRE y SUAVE (54s, loop infinito)
+   Marimba + bajo + pad + melodía pentatónica con variación.
+   Original, libre de derechos, empalme sin costuras.
+
+────────────────────────────────────────
+🎵 ¿CÓMO PONER TU PROPIA CANCIÓN?
+────────────────────────────────────────
+1. Copia tu archivo en esta carpeta (public/music/).
+2. Nómbralo:  lofi.mp3   (recomendado)   o   lofi.wav
+3. Guarda y recarga la página. ¡Listo!
+   (Si hay un lofi.mp3, tiene prioridad sobre el lofi.wav.)
+
+────────────────────────────────────────
+🎚️ MOODS GENERADOS POR CÓDIGO (opcionales)
+────────────────────────────────────────
+Cada uno reemplaza public/music/lofi.wav:
+   • Alegre/kawaii (actual):  python3 scripts/make_happy.py
+   • Lofi/chill:              python3 scripts/make_lofi.py
+   • Místico/celta:           python3 scripts/make_mystic.py
+
+¿Quieres OTRA melodía alegre distinta? Abre scripts/make_happy.py
+y cambia el número de random.seed(7) por otro (ej. 12, 99...).
+Cada semilla genera una melodía nueva. Vuelve a correrlo.
+
+Música gratis y libre de derechos si prefieres buscar:
+   • https://pixabay.com/music/
+   • https://freemusicarchive.org/

@@ -1,0 +1,15 @@
+📸 TU FOTO DE PERFIL
+=====================
+
+Para que aparezca tu foto en la sección "Sobre mí":
+
+1. Copia tu foto en la carpeta  public/  (esta misma)
+2. Nómbrala exactamente:  profile.jpg
+3. Recarga la página.
+
+Mientras no exista profile.jpg, se muestra el gatito kawaii 🐱 como respaldo
+(nunca se ve roto).
+
+Tip: una foto cuadrada (ej. 600x600) se ve mejor en la tarjeta.
+Si tu foto es .png, puedes nombrarla profile.jpg igual o avísame y
+cambio la extensión en components/Avatar.tsx.
