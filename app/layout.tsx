@@ -23,7 +23,7 @@ const pixel = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://camilaquimbaya.vercel.app"),
+  metadataBase: new URL("https://camilaquimbaya.dev"),
   title: "Camila Quimbaya · Full Stack & UX/UI Designer ✦",
   description:
     "Portafolio de Camila Quimbaya — Desarrolladora Full Stack, Diseñadora UX/UI y profe de programación. Cyberpunk rosa, kawaii y mucho código bonito.",
