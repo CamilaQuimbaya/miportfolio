@@ -42,14 +42,23 @@ export default function Hero() {
           <span className="text-white/80">{c.ui.available}</span>
         </motion.div>
 
-        {/* Saludo pixel */}
+        {/* Saludo pixel — animación letra por letra */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          aria-label={c.ui.greeting(profile.name)}
           className="mb-5 font-pixel text-xs text-neon-cyan glow-text"
         >
-          {c.ui.greeting(profile.firstName)}
+          {c.ui.greeting(profile.name).split("").map((ch, i) => (
+            <motion.span
+              key={i}
+              aria-hidden
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 + i * 0.035, duration: 0.3, ease: "easeOut" }}
+              className="inline-block"
+            >
+              {ch === " " ? " " : ch}
+            </motion.span>
+          ))}
         </motion.p>
 
         {/* Título principal */}

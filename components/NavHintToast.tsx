@@ -10,6 +10,11 @@ import CatLogo from "./CatLogo";
 export default function NavHintToast() {
   const { ui } = useContent();
   const [show, setShow] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
 
   useEffect(() => {
     if (sessionStorage.getItem("cq_hint")) return;
@@ -42,7 +47,9 @@ export default function NavHintToast() {
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-white/5">
             <CatLogo className="h-6 w-6" />
           </span>
-          <span className="text-[13px] leading-snug text-white/85">{ui.navHint}</span>
+          <span className="text-[13px] leading-snug text-white/85">
+            {isTouch ? ui.navHintMobile : ui.navHint}
+          </span>
           <button
             onClick={close}
             aria-label="Cerrar"

@@ -5,7 +5,7 @@ import { useContent } from "@/lib/i18n";
 export default function Marquee() {
   const { marquee: items } = useContent();
   return (
-    <div className="relative overflow-hidden border-y border-white/10 bg-white/[0.02] py-5">
+    <div className="relative overflow-hidden border-t border-white/10 bg-white/[0.02] py-5">
       <div className="flex w-max animate-marquee">
         {[...items, ...items].map((item, i) => (
           <div key={i} className="flex items-center">

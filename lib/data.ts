@@ -113,6 +113,7 @@ const dictionaries = {
       contactMe: "Contact me",
       downloadCV: "Download CV",
       navHint: "Use the cat or the ← → keys to navigate",
+      navHintMobile: "Swipe or tap the cat to navigate",
       location: "Latin America · Remote",
     },
     about: {
@@ -383,6 +384,7 @@ const dictionaries = {
       contactMe: "Contáctame",
       downloadCV: "Descargar CV",
       navHint: "Usa el gatito o las flechas ← → para navegar",
+      navHintMobile: "Desliza o toca el gatito para navegar",
       location: "Latinoamérica · Remoto",
     },
     about: {

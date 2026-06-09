@@ -82,7 +82,7 @@ export default function CatRadialNav() {
               <motion.div
                 initial={{ scale: 0, rotate: -30 }}
                 animate={{ scale: 1, rotate: 0 }}
-                exit={{ scale: 0 }}
+                exit={{ scale: 0, rotate: 180, transition: { duration: 0.32, ease: "easeIn" } }}
                 transition={{ type: "spring", stiffness: 220, damping: 18 }}
                 className="relative z-10 grid h-28 w-28 place-items-center rounded-full glass-strong shadow-glow-lg"
               >
@@ -109,7 +109,14 @@ export default function CatRadialNav() {
                     key={item.href}
                     initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
                     animate={{ x, y, scale: 1, opacity: 1 }}
-                    exit={{ x: 0, y: 0, scale: 0, opacity: 0 }}
+                    exit={{
+                      x: 0,
+                      y: 0,
+                      scale: 0,
+                      opacity: 0,
+                      rotate: -160,
+                      transition: { duration: 0.32, delay: 0.03 * (N - 1 - i), ease: "easeIn" },
+                    }}
                     transition={{
                       type: "spring",
                       stiffness: 260,
@@ -117,6 +124,7 @@ export default function CatRadialNav() {
                       delay: 0.04 * i,
                     }}
                     whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => go(item.href)}
                     className="absolute flex flex-col items-center gap-1"
                   >
