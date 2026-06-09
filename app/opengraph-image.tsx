@@ -11,6 +11,8 @@ export default function Image() {
     (
       <div
         style={{
+          position: "relative",
+          overflow: "hidden",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -23,6 +25,31 @@ export default function Image() {
           fontFamily: "sans-serif",
         }}
       >
+        {/* Estrellitas decorativas */}
+        {[
+          { t: 60, l: 1040, s: 48, c: "#ff8fe0", o: 0.9 },
+          { t: 150, l: 1130, s: 26, c: "#22d3ee", o: 0.8 },
+          { t: 300, l: 1075, s: 64, c: "#e0aaff", o: 0.7 },
+          { t: 470, l: 1135, s: 34, c: "#ff4fd8", o: 0.85 },
+          { t: 95, l: 770, s: 22, c: "#e0aaff", o: 0.7 },
+          { t: 545, l: 940, s: 28, c: "#22d3ee", o: 0.65 },
+          { t: 250, l: 1180, s: 18, c: "#ff8fe0", o: 0.6 },
+          { t: 410, l: 70, s: 24, c: "#e0aaff", o: 0.5 },
+        ].map((st, i) => (
+          <svg
+            key={i}
+            width={st.s}
+            height={st.s}
+            viewBox="0 0 24 24"
+            style={{ position: "absolute", top: st.t, left: st.l, opacity: st.o }}
+          >
+            <path
+              d="M12 0 C12.6 8 16 11.4 24 12 C16 12.6 12.6 16 12 24 C11.4 16 8 12.6 0 12 C8 11.4 11.4 8 12 0 Z"
+              fill={st.c}
+            />
+          </svg>
+        ))}
+
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {/* Gatito simplificado */}
           <svg width="120" height="120" viewBox="0 0 64 64">
