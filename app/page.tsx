@@ -6,6 +6,7 @@ import MusicPlayer from "@/components/MusicPlayer";
 import CatRadialNav from "@/components/CatRadialNav";
 import LoadingScreen from "@/components/LoadingScreen";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
+import NavHintToast from "@/components/NavHintToast";
 import { ViewProvider } from "@/lib/view";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <ViewStage />
       <MusicPlayer />
       <CatRadialNav />
+      <NavHintToast />
       <KonamiEasterEgg />
     </ViewProvider>
   );

@@ -129,16 +129,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Pista de navegación por vistas */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.1 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap text-sm text-white/45"
-      >
-        <span className="animate-float text-lg">🐱</span>
-        {c.ui.navHint}
-      </motion.div>
     </section>
   );
 }
