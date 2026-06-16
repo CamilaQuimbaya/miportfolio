@@ -61,7 +61,7 @@ export default function Hero() {
           ))}
         </motion.p>
 
-        {/* Título principal */}
+        {/* Título principal — rol primario claro y jerárquico */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -69,11 +69,18 @@ export default function Hero() {
           className="font-display text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl"
         >
           <span className="text-gradient glow-text animate-gradient-x">{c.ui.heroTitle[0]}</span>
-          <span className="text-white"> · {c.ui.heroTitle[1]}</span>
-          <br />
-          <span className="text-gradient animate-gradient-x">{c.ui.heroTitle[2]}</span>
-          <span className="text-white"> {c.ui.heroTitle[3]}</span>
+          <span className="text-white"> {c.ui.heroTitle[1]}</span>
         </motion.h1>
+
+        {/* Roles de respaldo — no compiten con el titular */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-4 font-pixel text-[11px] uppercase tracking-[0.2em] text-white/70 sm:text-xs"
+        >
+          {c.ui.heroTitle[2]}
+        </motion.p>
 
         {/* Tagline */}
         <motion.p
@@ -105,7 +112,7 @@ export default function Hero() {
             {c.ui.contactMe}
           </button>
           <a
-            href="/cv"
+            href="/cv?print=1"
             target="_blank"
             className="rounded-xl glass px-7 py-3.5 font-semibold text-white transition-colors hover:bg-white/10"
           >

@@ -26,46 +26,75 @@ export const profile = {
   ],
 };
 
+// ---------- Testimonios (prueba social) ----------
+// ⚠️ REEMPLAZA estos placeholders con testimonios REALES — de gente que lideraste,
+// mentoreaste o con quien trabajaste. No inventes: un reclutador los verifica en
+// LinkedIn, y un testimonio falso destruye la confianza. `avatar` y `linkedin` son
+// opcionales (sin avatar se muestra la inicial; el link de LinkedIn da credibilidad).
+export type Testimonial = {
+  name: string;
+  role: string;
+  quote: string;
+  avatar?: string; // /testimonials/x.webp (opcional)
+  linkedin?: string;
+};
+
+export const testimonialsList: Testimonial[] = [
+  // Mientras esté vacío, la sección de Testimonios queda OCULTA en todo el sitio
+  // (no aparece en la navegación). En cuanto agregues una entrada real, reaparece
+  // sola. Forma de cada testimonio:
+  // {
+  //   name: "Nombre Apellido",
+  //   role: "Rol · relación contigo (ej: Frontend Dev que mentoreé en Cavipetrol)",
+  //   quote: "La frase, 1-3 líneas. Específica > genérica.",
+  //   linkedin: "https://www.linkedin.com/in/...", // opcional, da credibilidad
+  //   avatar: "/testimonials/persona.webp",        // opcional (si no, muestra la inicial)
+  // },
+];
+
 // Base neutral de proyectos (tags, emoji, gradiente, links).
 // El título y la descripción se traducen abajo en cada idioma.
 // link = demo en vivo (omitir si está caído). repo = código en GitHub.
 // enterprise = trabajo privado sin link público.
+// Orden = orden de render. El índice 0 va destacado (grande).
+// Va primero MovieView porque tiene demo en vivo: la card más prominente
+// debe poder abrirse. Conecta (privado) baja a card normal con narrativa fuerte.
+// image = preview del proyecto en public/projects/. Si el archivo no existe,
+// la card cae con gracia a su diseño de gradiente (ver ProjectCard).
 const projectsBase = [
-  {
-    tags: ["Angular", "TypeScript", "Azure DevOps", "PrimeNG"],
-    icon: "building",
-    iconColor: "#c084fc",
-    gradient: "from-neon-purple/40 to-neon-cyan/30",
-    enterprise: true,
-  },
   {
     tags: ["React", "TypeScript", "API"],
     icon: "film",
     iconColor: "#ff4fd8",
     gradient: "from-neon-pink/40 to-neon-purple/30",
+    image: "/projects/movieview.png",
     link: "https://movieview-one.vercel.app",
     repo: "https://github.com/CamilaQuimbaya/movieview",
+  },
+  {
+    tags: ["Angular", "TypeScript", "Azure DevOps", "PrimeNG"],
+    icon: "building",
+    iconColor: "#c084fc",
+    gradient: "from-neon-purple/40 to-neon-cyan/30",
+    image: "/projects/conecta.png",
+    enterprise: true,
   },
   {
     tags: ["TypeScript", "Frontend", "React"],
     icon: "briefcase",
     iconColor: "#22d3ee",
     gradient: "from-neon-cyan/40 to-neon-pink/30",
+    image: "/projects/ntt-data.png",
     link: "https://prueba-tecnica-nttdata.vercel.app",
     repo: "https://github.com/CamilaQuimbaya/Prueba-tecnica-nttdata",
-  },
-  {
-    tags: ["Angular", "TypeScript", "SPA"],
-    icon: "note",
-    iconColor: "#e0aaff",
-    gradient: "from-neon-violet/40 to-neon-cyan/30",
-    repo: "https://github.com/CamilaQuimbaya/appnotitas",
+    featured: true,
   },
   {
     tags: ["Solidity", "Next.js", "Web3"],
     icon: "chain",
     iconColor: "#22d3ee",
     gradient: "from-neon-cyan/40 to-neon-violet/30",
+    image: "/projects/kiichain.png",
     repo: "https://github.com/CamilaQuimbaya/kiichain",
   },
   {
@@ -73,12 +102,23 @@ const projectsBase = [
     icon: "server",
     iconColor: "#ff8fe0",
     gradient: "from-neon-pink/40 to-neon-violet/30",
+    image: "/projects/backend-jwt.png",
     repo: "https://github.com/CamilaQuimbaya/Backend-crud-y-jwt",
+  },
+  {
+    tags: ["Angular", "TypeScript", "SPA"],
+    icon: "note",
+    iconColor: "#e0aaff",
+    gradient: "from-neon-violet/40 to-neon-cyan/30",
+    image: "/projects/appnotitas.png",
+    repo: "https://github.com/CamilaQuimbaya/appnotitas",
   },
 ];
 
 // ---------- Tipos ----------
-export type Skill = { name: string; level: number; emoji: string };
+// Nivel categórico en vez de porcentaje: o lo dominas (core), es sólido, o lo conoces.
+export type SkillLevel = "core" | "solid" | "familiar";
+export type Skill = { name: string; level: SkillLevel; emoji: string };
 export type SkillGroup = { key: string; title: string; skills: Skill[] };
 export type Project = {
   title: string;
@@ -87,9 +127,11 @@ export type Project = {
   icon: string;
   iconColor: string;
   gradient: string;
+  image?: string;
   link?: string;
   repo?: string;
   enterprise?: boolean;
+  featured?: boolean;
 };
 
 // ---------- Diccionarios bilingües ----------
@@ -100,15 +142,21 @@ const dictionaries = {
       { label: "About", href: "#sobre-mi" },
       { label: "Skills", href: "#skills" },
       { label: "Projects", href: "#proyectos" },
+      { label: "Testimonials", href: "#testimonios" },
       { label: "Contact", href: "#contacto" },
     ],
+    testimonials: {
+      kicker: "kind words",
+      title: "What people say",
+      subtitle: "From teammates I've led to developers I've mentored.",
+    },
     ui: {
       cta: "Let's talk",
       available: "Available for new projects",
       greeting: (name: string) => `Hi, I'm ${name}`,
-      heroTitle: ["Full Stack", "Tech Lead", "UX/UI", "Designer"],
+      heroTitle: ["Full Stack", "Developer", "Tech Lead · UX/UI · 200+ devs mentored"],
       tagline:
-        "I build beautiful, fast and accessible digital products end to end — and I teach others to do the same.",
+        "I build digital products end to end — from clean, scalable code to the product decisions behind it. I've led frontend teams and mentored 200+ developers.",
       viewProjects: "View projects",
       contactMe: "Contact me",
       downloadCV: "Download CV",
@@ -135,7 +183,7 @@ const dictionaries = {
         title: "Fact sheet",
         availability: "Available for work",
         rows: [
-          { k: "Role", v: "Full Stack · UX/UI · Teacher" },
+          { k: "Role", v: "Full Stack Developer · Tech Lead" },
           { k: "Location", v: "Latin America · Remote" },
           { k: "Experience", v: "5+ years" },
           { k: "Languages", v: "Spanish, English" },
@@ -147,71 +195,72 @@ const dictionaries = {
     skills: {
       kicker: "my stack",
       title: "Skills & Tools",
-      subtitle: "The kit I use to design and build end to end.",
+      subtitle: "Grouped by domain, no made-up percentages — what I work with day to day first.",
+      levels: { core: "Core", solid: "Solid", familiar: "Familiar" },
       groups: [
         {
           key: "frontend",
           title: "Frontend",
           skills: [
-            { name: "React / Next.js", level: 95, emoji: "⚛️" },
-            { name: "Angular", level: 92, emoji: "🅰️" },
-            { name: "TypeScript", level: 92, emoji: "🔷" },
-            { name: "Tailwind CSS", level: 95, emoji: "💨" },
-            { name: "Bootstrap", level: 88, emoji: "🅱️" },
-            { name: "Redux", level: 85, emoji: "🔄" },
+            { name: "React / Next.js", level: "core", emoji: "⚛️" },
+            { name: "Angular", level: "core", emoji: "🅰️" },
+            { name: "TypeScript", level: "core", emoji: "🔷" },
+            { name: "Tailwind CSS", level: "core", emoji: "💨" },
+            { name: "Redux", level: "solid", emoji: "🔄" },
+            { name: "Bootstrap", level: "solid", emoji: "🅱️" },
           ],
         },
         {
           key: "backend",
           title: "Backend",
           skills: [
-            { name: "Node.js", level: 90, emoji: "🟢" },
-            { name: "C# / .NET", level: 85, emoji: "💠" },
-            { name: "Golang", level: 80, emoji: "🐹" },
-            { name: "PHP", level: 80, emoji: "🐘" },
-            { name: "REST / GraphQL", level: 85, emoji: "🔗" },
-            { name: "RabbitMQ / Kafka", level: 78, emoji: "📨" },
+            { name: "Node.js", level: "core", emoji: "🟢" },
+            { name: "C# / .NET", level: "solid", emoji: "💠" },
+            { name: "REST / GraphQL", level: "solid", emoji: "🔗" },
+            { name: "Golang", level: "solid", emoji: "🐹" },
+            { name: "PHP", level: "familiar", emoji: "🐘" },
+            { name: "RabbitMQ / Kafka", level: "solid", emoji: "📨" },
           ],
         },
         {
           key: "databases",
           title: "Databases",
           skills: [
-            { name: "PostgreSQL", level: 88, emoji: "🗄️" },
-            { name: "MySQL", level: 85, emoji: "🗃️" },
-            { name: "MongoDB", level: 85, emoji: "🍃" },
-            { name: "Redis", level: 80, emoji: "⚡" },
+            { name: "PostgreSQL", level: "solid", emoji: "🗄️" },
+            { name: "MySQL", level: "solid", emoji: "🗃️" },
+            { name: "MongoDB", level: "solid", emoji: "🍃" },
+            { name: "Redis", level: "familiar", emoji: "⚡" },
           ],
         },
         {
           key: "devops",
           title: "DevOps & Tools",
           skills: [
-            { name: "Azure DevOps", level: 88, emoji: "☁️" },
-            { name: "Docker", level: 85, emoji: "🐳" },
-            { name: "Kubernetes", level: 78, emoji: "☸️" },
-            { name: "Git", level: 92, emoji: "🌿" },
-            { name: "CI/CD", level: 85, emoji: "🔁" },
+            { name: "Git", level: "core", emoji: "🌿" },
+            { name: "Azure DevOps", level: "solid", emoji: "☁️" },
+            { name: "Docker", level: "solid", emoji: "🐳" },
+            { name: "CI/CD", level: "solid", emoji: "🔁" },
+            { name: "Kubernetes", level: "solid", emoji: "☸️" },
           ],
         },
         {
           key: "design",
           title: "UX/UI Design",
           skills: [
-            { name: "Figma", level: 95, emoji: "🎯" },
-            { name: "Design Systems", level: 90, emoji: "🧩" },
-            { name: "Prototyping", level: 88, emoji: "🪄" },
-            { name: "User Research", level: 80, emoji: "🔍" },
+            { name: "Figma", level: "core", emoji: "🎯" },
+            { name: "Design Systems", level: "core", emoji: "🧩" },
+            { name: "Prototyping", level: "solid", emoji: "🪄" },
+            { name: "User Research", level: "familiar", emoji: "🔍" },
           ],
         },
         {
           key: "teaching",
           title: "Teaching",
           skills: [
-            { name: "Teaching code", level: 95, emoji: "📚" },
-            { name: "1:1 Mentoring", level: 92, emoji: "🤝" },
-            { name: "Course creation", level: 88, emoji: "🎓" },
-            { name: "Public speaking", level: 85, emoji: "🎤" },
+            { name: "Teaching code", level: "core", emoji: "📚" },
+            { name: "1:1 Mentoring", level: "core", emoji: "🤝" },
+            { name: "Course creation", level: "solid", emoji: "🎓" },
+            { name: "Public speaking", level: "solid", emoji: "🎤" },
           ],
         },
       ] as SkillGroup[],
@@ -219,38 +268,41 @@ const dictionaries = {
     projects: {
       kicker: "my work",
       title: "Featured projects",
-      subtitle: "A selection of work I'm proud of — from enterprise apps to personal builds.",
+      subtitle: "From an enterprise platform I lead to focused personal builds — the problem, my role and what I shipped.",
       enterprise: "Enterprise · private",
+      demo: "Live demo",
+      code: "Code",
+      openProject: "Open project",
       items: [
-        {
-          title: "Conecta",
-          description:
-            "Enterprise Angular platform I lead as Frontend Tech Lead — architecture, CI/CD with Azure DevOps and a scalable component system.",
-        },
         {
           title: "MovieView",
           description:
-            "Movie discovery app built with React + TypeScript, consuming a movies API with search and detail views.",
+            "Browse and discover movies, search the catalog and drill into details. Built with React + TypeScript over a movies API — I focused on fast search, clean state and a responsive UI that feels good on any screen.",
+        },
+        {
+          title: "Conecta",
+          description:
+            "Internal platform for a financial employees' fund. As Frontend Tech Lead I own the architecture and a scalable component system, run CI/CD on Azure DevOps, and lead and mentor the frontend team so we ship reliably — private, so I can't share a link, but happy to walk through it.",
         },
         {
           title: "NTT Data Technical Test",
           description:
-            "Frontend technical challenge solved with TypeScript — clean architecture, API consumption and a polished UI.",
-        },
-        {
-          title: "Appnotitas",
-          description:
-            "Notes app built with Angular — create, edit and organize notes with a clean, reactive interface.",
+            "A frontend hiring challenge: consume an API and present it cleanly under time pressure. Solved with TypeScript and a clean architecture — the kind of pragmatic, readable code I'd want a team to maintain.",
         },
         {
           title: "KiiChain",
           description:
-            "Smart contract in Solidity with a Next.js frontend — my dive into Web3 and blockchain development.",
+            "My dive into Web3: a Solidity smart contract with a Next.js frontend, exploring how on-chain logic and a usable UI fit together.",
         },
         {
           title: "Backend CRUD + JWT",
           description:
-            "REST API with Node.js & Express: full CRUD plus JWT authentication and protected routes.",
+            "A REST API with Node.js & Express: full CRUD, JWT auth and protected routes — the backend foundation behind a real product, done right.",
+        },
+        {
+          title: "Appnotitas",
+          description:
+            "A notes app in Angular — create, edit and organize notes with a clean, reactive interface focused on a frictionless everyday flow.",
         },
       ],
     },
@@ -371,15 +423,21 @@ const dictionaries = {
       { label: "Sobre mí", href: "#sobre-mi" },
       { label: "Skills", href: "#skills" },
       { label: "Proyectos", href: "#proyectos" },
+      { label: "Testimonios", href: "#testimonios" },
       { label: "Contacto", href: "#contacto" },
     ],
+    testimonials: {
+      kicker: "kind words",
+      title: "Lo que dicen",
+      subtitle: "De compañeros que lideré a developers que mentoreé.",
+    },
     ui: {
       cta: "Hablemos",
       available: "Disponible para proyectos nuevos",
       greeting: (name: string) => `Hola, soy ${name}`,
-      heroTitle: ["Full Stack", "Tech Lead", "UX/UI", "Designer"],
+      heroTitle: ["Full Stack", "Developer", "Tech Lead · UX/UI · +200 devs mentoreados"],
       tagline:
-        "Construyo productos digitales bonitos, rápidos y accesibles de punta a punta — y enseño a otras personas a hacer lo mismo.",
+        "Construyo productos digitales de punta a punta — del código limpio y escalable a las decisiones de producto detrás. Lideré equipos de frontend y mentoreé a +200 developers.",
       viewProjects: "Ver proyectos",
       contactMe: "Contáctame",
       downloadCV: "Descargar CV",
@@ -406,7 +464,7 @@ const dictionaries = {
         title: "Ficha técnica",
         availability: "Disponible para trabajar",
         rows: [
-          { k: "Rol", v: "Full Stack · UX/UI · Profe" },
+          { k: "Rol", v: "Full Stack Developer · Tech Lead" },
           { k: "Ubicación", v: "Latinoamérica · Remoto" },
           { k: "Experiencia", v: "+5 años" },
           { k: "Idiomas", v: "Español, Inglés" },
@@ -418,71 +476,72 @@ const dictionaries = {
     skills: {
       kicker: "my stack",
       title: "Skills & Herramientas",
-      subtitle: "El kit con el que diseño y construyo de punta a punta.",
+      subtitle: "Agrupado por dominio, sin porcentajes inventados — primero lo que uso a diario.",
+      levels: { core: "Dominio", solid: "Sólido", familiar: "Familiar" },
       groups: [
         {
           key: "frontend",
           title: "Frontend",
           skills: [
-            { name: "React / Next.js", level: 95, emoji: "⚛️" },
-            { name: "Angular", level: 92, emoji: "🅰️" },
-            { name: "TypeScript", level: 92, emoji: "🔷" },
-            { name: "Tailwind CSS", level: 95, emoji: "💨" },
-            { name: "Bootstrap", level: 88, emoji: "🅱️" },
-            { name: "Redux", level: 85, emoji: "🔄" },
+            { name: "React / Next.js", level: "core", emoji: "⚛️" },
+            { name: "Angular", level: "core", emoji: "🅰️" },
+            { name: "TypeScript", level: "core", emoji: "🔷" },
+            { name: "Tailwind CSS", level: "core", emoji: "💨" },
+            { name: "Redux", level: "solid", emoji: "🔄" },
+            { name: "Bootstrap", level: "solid", emoji: "🅱️" },
           ],
         },
         {
           key: "backend",
           title: "Backend",
           skills: [
-            { name: "Node.js", level: 90, emoji: "🟢" },
-            { name: "C# / .NET", level: 85, emoji: "💠" },
-            { name: "Golang", level: 80, emoji: "🐹" },
-            { name: "PHP", level: 80, emoji: "🐘" },
-            { name: "REST / GraphQL", level: 85, emoji: "🔗" },
-            { name: "RabbitMQ / Kafka", level: 78, emoji: "📨" },
+            { name: "Node.js", level: "core", emoji: "🟢" },
+            { name: "C# / .NET", level: "solid", emoji: "💠" },
+            { name: "REST / GraphQL", level: "solid", emoji: "🔗" },
+            { name: "Golang", level: "solid", emoji: "🐹" },
+            { name: "PHP", level: "familiar", emoji: "🐘" },
+            { name: "RabbitMQ / Kafka", level: "solid", emoji: "📨" },
           ],
         },
         {
           key: "databases",
           title: "Bases de datos",
           skills: [
-            { name: "PostgreSQL", level: 88, emoji: "🗄️" },
-            { name: "MySQL", level: 85, emoji: "🗃️" },
-            { name: "MongoDB", level: 85, emoji: "🍃" },
-            { name: "Redis", level: 80, emoji: "⚡" },
+            { name: "PostgreSQL", level: "solid", emoji: "🗄️" },
+            { name: "MySQL", level: "solid", emoji: "🗃️" },
+            { name: "MongoDB", level: "solid", emoji: "🍃" },
+            { name: "Redis", level: "familiar", emoji: "⚡" },
           ],
         },
         {
           key: "devops",
           title: "DevOps & Tools",
           skills: [
-            { name: "Azure DevOps", level: 88, emoji: "☁️" },
-            { name: "Docker", level: 85, emoji: "🐳" },
-            { name: "Kubernetes", level: 78, emoji: "☸️" },
-            { name: "Git", level: 92, emoji: "🌿" },
-            { name: "CI/CD", level: 85, emoji: "🔁" },
+            { name: "Git", level: "core", emoji: "🌿" },
+            { name: "Azure DevOps", level: "solid", emoji: "☁️" },
+            { name: "Docker", level: "solid", emoji: "🐳" },
+            { name: "CI/CD", level: "solid", emoji: "🔁" },
+            { name: "Kubernetes", level: "solid", emoji: "☸️" },
           ],
         },
         {
           key: "design",
           title: "Diseño UX/UI",
           skills: [
-            { name: "Figma", level: 95, emoji: "🎯" },
-            { name: "Design Systems", level: 90, emoji: "🧩" },
-            { name: "Prototipado", level: 88, emoji: "🪄" },
-            { name: "User Research", level: 80, emoji: "🔍" },
+            { name: "Figma", level: "core", emoji: "🎯" },
+            { name: "Design Systems", level: "core", emoji: "🧩" },
+            { name: "Prototipado", level: "solid", emoji: "🪄" },
+            { name: "User Research", level: "familiar", emoji: "🔍" },
           ],
         },
         {
           key: "teaching",
           title: "Docencia",
           skills: [
-            { name: "Enseñanza de código", level: 95, emoji: "📚" },
-            { name: "Mentoría 1:1", level: 92, emoji: "🤝" },
-            { name: "Creación de cursos", level: 88, emoji: "🎓" },
-            { name: "Oratoria / charlas", level: 85, emoji: "🎤" },
+            { name: "Enseñanza de código", level: "core", emoji: "📚" },
+            { name: "Mentoría 1:1", level: "core", emoji: "🤝" },
+            { name: "Creación de cursos", level: "solid", emoji: "🎓" },
+            { name: "Oratoria / charlas", level: "solid", emoji: "🎤" },
           ],
         },
       ] as SkillGroup[],
@@ -490,38 +549,41 @@ const dictionaries = {
     projects: {
       kicker: "my work",
       title: "Proyectos destacados",
-      subtitle: "Una selección de la que estoy orgullosa — desde apps empresariales hasta proyectos personales.",
+      subtitle: "Desde una plataforma empresarial que lidero hasta builds personales — el problema, mi rol y lo que entregué.",
       enterprise: "Empresarial · privado",
+      demo: "Demo en vivo",
+      code: "Código",
+      openProject: "Abrir proyecto",
       items: [
-        {
-          title: "Conecta",
-          description:
-            "Plataforma empresarial en Angular que lidero como Tech Lead de frontend — arquitectura, CI/CD con Azure DevOps y un sistema de componentes escalable.",
-        },
         {
           title: "MovieView",
           description:
-            "App para descubrir películas hecha con React + TypeScript, consumiendo una API de cine con búsqueda y vistas de detalle.",
+            "Explora y descubre películas, busca en el catálogo y entra al detalle. Hecha con React + TypeScript sobre una API de cine — me enfoqué en búsqueda rápida, estado limpio y una UI responsive que se siente bien en cualquier pantalla.",
+        },
+        {
+          title: "Conecta",
+          description:
+            "Plataforma interna de un fondo de empleados. Como Tech Lead de frontend soy dueña de la arquitectura y de un sistema de componentes escalable, opero el CI/CD en Azure DevOps y lidero y mentoreo al equipo para entregar con confianza — es privada, así que no puedo compartir link, pero con gusto la recorro contigo.",
         },
         {
           title: "Prueba Técnica NTT Data",
           description:
-            "Reto técnico de frontend resuelto con TypeScript — arquitectura limpia, consumo de API e interfaz cuidada.",
-        },
-        {
-          title: "Appnotitas",
-          description:
-            "App de notas hecha con Angular — crea, edita y organiza notas con una interfaz limpia y reactiva.",
+            "Un reto técnico de contratación: consumir una API y presentarla limpia y contrarreloj. Resuelto con TypeScript y arquitectura limpia — el tipo de código pragmático y legible que querría que un equipo mantenga.",
         },
         {
           title: "KiiChain",
           description:
-            "Contrato inteligente en Solidity con frontend en Next.js — mi inmersión en Web3 y desarrollo blockchain.",
+            "Mi inmersión en Web3: un contrato inteligente en Solidity con frontend en Next.js, explorando cómo encajan la lógica on-chain y una UI usable.",
         },
         {
           title: "Backend CRUD + JWT",
           description:
-            "API REST con Node.js y Express: CRUD completo más autenticación con JWT y rutas protegidas.",
+            "Una API REST con Node.js y Express: CRUD completo, autenticación con JWT y rutas protegidas — la base de backend detrás de un producto real, bien hecha.",
+        },
+        {
+          title: "Appnotitas",
+          description:
+            "Una app de notas en Angular — crea, edita y organiza notas con una interfaz limpia y reactiva enfocada en un flujo diario sin fricción.",
         },
       ],
     },
@@ -647,12 +709,19 @@ export function getContent(lang: Lang) {
     description: d.projects.items[i].description,
   }));
 
+  // La sección de testimonios solo aparece si hay testimonios reales cargados.
+  // Vacío = oculta (no mostramos prueba social falsa).
+  const nav = testimonialsList.length
+    ? d.nav
+    : d.nav.filter((n) => n.href !== "#testimonios");
+
   return {
-    nav: d.nav,
+    nav,
     ui: d.ui,
     about: d.about,
     skills: d.skills,
     projects: { ...d.projects, items: projects },
+    testimonials: d.testimonials,
     contact: d.contact,
     footer: d.footer,
     music: d.music,

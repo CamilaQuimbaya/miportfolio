@@ -66,7 +66,7 @@ export default function Navbar() {
                 className={`rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
                   lang === l
                     ? "bg-gradient-to-r from-neon-pink to-neon-purple text-white shadow-glow"
-                    : "text-white/45 hover:text-white"
+                    : "text-white/65 hover:text-white"
                 }`}
               >
                 {l.toUpperCase()}

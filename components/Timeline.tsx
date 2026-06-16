@@ -53,7 +53,7 @@ export default function Timeline({ items }: { items: Item[] }) {
                 <p className="mt-0.5 font-display text-sm font-bold leading-tight text-white transition-colors group-hover:text-neon-pink">
                   {it.role}
                 </p>
-                <p className="text-xs text-white/55">{it.company}</p>
+                <p className="text-xs text-white/70">{it.company}</p>
               </div>
             </motion.div>
           );

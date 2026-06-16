@@ -98,6 +98,22 @@ export default function NavIcon({ name, className }: Props) {
         </svg>
       );
 
+    // 💬 TESTIMONIOS — burbuja de diálogo con corazón
+    case "testimonios":
+      return (
+        <svg {...common} role="img" aria-label="Testimonios">
+          <defs>
+            <linearGradient id="niTesti" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#ff8fe0" />
+              <stop offset="100%" stopColor="#22d3ee" />
+            </linearGradient>
+          </defs>
+          <rect x="6" y="9" width="36" height="25" rx="7" fill="url(#niTesti)" stroke="#fff0fb" strokeWidth="1.3" />
+          <path d="M15 33 L15 41 L25 33 Z" fill="url(#niTesti)" stroke="#fff0fb" strokeWidth="1.3" strokeLinejoin="round" />
+          <path d="M24 16.5c-1.5-2.3-5-1.5-5 1.2 0 2.3 3 4.3 5 5.8 2-1.5 5-3.5 5-5.8 0-2.7-3.5-3.5-5-1.2Z" fill="#ff2d95" />
+        </svg>
+      );
+
     // 💌 CONTACTO — sobre con corazón
     case "contacto":
       return (

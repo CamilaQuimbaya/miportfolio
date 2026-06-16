@@ -154,7 +154,7 @@ export default function CatRadialNav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="absolute bottom-8 text-sm text-white/50"
+              className="absolute bottom-8 text-sm text-white/65"
             >
               {lang === "es" ? "Esc o clic afuera para cerrar" : "Esc or click outside to close"}
             </motion.p>

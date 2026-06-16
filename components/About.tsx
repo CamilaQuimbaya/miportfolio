@@ -48,7 +48,7 @@ export default function About() {
                   {profile.name}
                 </p>
                 <p className="text-sm text-neon-pink">{profile.alias}</p>
-                <p className="mt-1 text-xs text-white/50">Full Stack · UX/UI · Teaching</p>
+                <p className="mt-1 text-xs text-white/65">Full Stack · UX/UI · Teaching</p>
               </div>
 
               <div className="mt-5 grid grid-cols-2 gap-2.5">
@@ -58,7 +58,7 @@ export default function About() {
                     className="rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-center transition-colors hover:border-neon-pink/30"
                   >
                     <p className="text-gradient font-display text-2xl font-extrabold">{stat.value}</p>
-                    <p className="mt-0.5 text-[10px] leading-tight text-white/50">{stat.label}</p>
+                    <p className="mt-0.5 text-[10px] leading-tight text-white/65">{stat.label}</p>
                   </div>
                 ))}
               </div>

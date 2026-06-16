@@ -9,7 +9,7 @@ export default function Marquee() {
       <div className="flex w-max animate-marquee">
         {[...items, ...items].map((item, i) => (
           <div key={i} className="flex items-center">
-            <span className="px-6 font-display text-xl font-semibold text-white/40">
+            <span className="px-6 font-display text-xl font-semibold text-white/60">
               {item}
             </span>
             <span className="text-neon-pink">✦</span>

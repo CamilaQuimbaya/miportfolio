@@ -9,13 +9,24 @@ import {
   type ReactNode,
 } from "react";
 
-export type ViewId = "inicio" | "sobre-mi" | "skills" | "proyectos" | "contacto";
+import { testimonialsList } from "./data";
 
+export type ViewId =
+  | "inicio"
+  | "sobre-mi"
+  | "skills"
+  | "proyectos"
+  | "testimonios"
+  | "contacto";
+
+// "testimonios" solo entra al recorrido si hay testimonios reales cargados
+// (ver testimonialsList en lib/data.ts). Vacío = la vista queda fuera del flujo.
 export const VIEW_ORDER: ViewId[] = [
   "inicio",
   "sobre-mi",
   "skills",
   "proyectos",
+  ...(testimonialsList.length ? (["testimonios"] as ViewId[]) : []),
   "contacto",
 ];
 

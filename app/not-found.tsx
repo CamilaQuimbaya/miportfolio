@@ -21,7 +21,7 @@ export default function NotFound() {
         <p className="mt-3 text-lg text-white/80">
           Esta página se perdió en el ciberespacio
         </p>
-        <p className="text-sm text-white/45">This page got lost in cyberspace</p>
+        <p className="text-sm text-white/65">This page got lost in cyberspace</p>
 
         <Link
           href="/"

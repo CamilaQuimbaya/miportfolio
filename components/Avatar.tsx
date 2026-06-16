@@ -5,9 +5,9 @@ import { useState } from "react";
 import CatLogo from "./CatLogo";
 
 /**
- * Muestra la foto de perfil (/profile.png) optimizada con next/image.
+ * Muestra la foto de perfil (/profile.webp) optimizada con next/image.
  * Si todavía no existe, cae elegantemente al gatito kawaii.
- * Para cambiarla: reemplaza  public/profile.png
+ * Para cambiarla: reemplaza  public/profile.webp
  */
 export default function Avatar({ className = "" }: { className?: string }) {
   const [error, setError] = useState(false);
@@ -25,7 +25,7 @@ export default function Avatar({ className = "" }: { className?: string }) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <Image
-        src="/profile.png"
+        src="/profile.webp"
         alt="Camila Quimbaya"
         fill
         sizes="(max-width: 768px) 85vw, 400px"

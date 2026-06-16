@@ -65,7 +65,7 @@ export default function Contact() {
                       <d.Icon className="h-5 w-5" />
                     </span>
                     <div className="min-w-0">
-                      <p className="text-[11px] uppercase tracking-wide text-white/40">{d.label}</p>
+                      <p className="text-[11px] uppercase tracking-wide text-white/65">{d.label}</p>
                       <p className="truncate text-sm font-medium text-white">{d.value}</p>
                     </div>
                     <span className="ml-auto text-white/25 transition-all group-hover:translate-x-1 group-hover:text-neon-pink">
@@ -104,7 +104,7 @@ export default function Contact() {
                 <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                 <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                 <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-2 font-pixel text-[9px] text-white/45">message.tsx</span>
+                <span className="ml-2 font-pixel text-[9px] text-white/65">message.tsx</span>
                 <span className="ml-auto font-pixel text-[8px] text-neon-cyan">✦ send</span>
               </div>
               <div className="p-6">

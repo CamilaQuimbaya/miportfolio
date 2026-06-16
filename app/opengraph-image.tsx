@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 // Tarjeta que se muestra al compartir el link (WhatsApp, LinkedIn, X, etc.)
 export const runtime = "edge";
-export const alt = "Camila Quimbaya · Full Stack & UX/UI Designer";
+export const alt = "Camila Quimbaya · Full Stack Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -85,11 +85,11 @@ export default function Image() {
         >
           Camila Quimbaya
         </div>
-        <div style={{ fontSize: 38, marginTop: 16, color: "#f5e9ff" }}>
-          Full Stack · Tech Lead · UX/UI Designer
+        <div style={{ fontSize: 44, marginTop: 16, fontWeight: 700, color: "#f5e9ff" }}>
+          Full Stack Developer
         </div>
-        <div style={{ fontSize: 30, marginTop: 8, color: "#e0aaff" }}>
-          + Profesora de programacion
+        <div style={{ fontSize: 28, marginTop: 10, color: "#e0aaff" }}>
+          Tech Lead · UX/UI · +200 devs mentoreados
         </div>
       </div>
     ),

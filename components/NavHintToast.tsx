@@ -53,7 +53,7 @@ export default function NavHintToast() {
           <button
             onClick={close}
             aria-label="Cerrar"
-            className="ml-1 shrink-0 text-white/35 transition-colors hover:text-white"
+            className="ml-1 shrink-0 text-white/60 transition-colors hover:text-white"
           >
             ✕
           </button>

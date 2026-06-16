@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { profile } from "@/lib/data";
 import { useContent, useLang } from "@/lib/i18n";
@@ -22,6 +23,15 @@ export default function CVPage() {
     en: { back: "← Back to site", print: "Save as PDF" },
     es: { back: "← Volver al sitio", print: "Guardar como PDF" },
   }[lang];
+
+  // Llegando con ?print=1 (desde el botón "Descargar CV" del Hero), abre directo
+  // el diálogo de guardar como PDF. Se puede cancelar para solo ver la hoja.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("print") !== "1") return;
+    const t = window.setTimeout(() => window.print(), 600);
+    return () => window.clearTimeout(t);
+  }, []);
 
   const title =
     lang === "es"
@@ -53,7 +63,7 @@ export default function CVPage() {
                 className={`rounded-lg px-2.5 py-1 text-xs font-bold transition-all ${
                   lang === l
                     ? "bg-gradient-to-r from-neon-pink to-neon-purple text-white shadow-glow"
-                    : "text-white/45 hover:text-white"
+                    : "text-white/65 hover:text-white"
                 }`}
               >
                 {l.toUpperCase()}
@@ -82,7 +92,7 @@ export default function CVPage() {
         >
           <div className="relative h-[104px] w-[88px] shrink-0 overflow-hidden rounded-2xl ring-2 ring-neon-pink/70 shadow-[0_0_22px_rgba(255,79,216,0.5)]">
             <Image
-              src="/profile.png"
+              src="/profile.webp"
               alt="Camila Quimbaya"
               width={88}
               height={104}
