@@ -18,14 +18,14 @@ export default function About() {
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-neon-purple/15 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-72 w-72 translate-x-1/2 rounded-full bg-neon-pink/15 blur-[100px]" />
 
-      <div className="relative mx-auto w-full max-w-5xl">
+      <div className="relative mx-auto w-full max-w-6xl">
         <SectionHeading kicker={about.kicker} title={about.title} />
 
-        <div className="grid items-start gap-9 md:grid-cols-[400px_1fr]">
+        <div className="grid items-center gap-10 md:grid-cols-[440px_1fr]">
           {/* IZQUIERDA: foto grande (suelta) + identidad + stats */}
           <Reveal>
             <div className="flex flex-col">
-              <div className="relative mx-auto flex aspect-square w-full max-w-[400px] items-center justify-center">
+              <div className="relative mx-auto flex aspect-square w-full max-w-[440px] items-center justify-center">
                 {/* estrellitas flotantes */}
                 <span className="absolute -left-4 -top-4 z-20 animate-twinkle text-2xl text-neon-lilac">✦</span>
                 <span className="absolute -right-3 top-8 z-20 animate-twinkle text-lg text-neon-cyan" style={{ animationDelay: "0.6s" }}>✧</span>
@@ -109,7 +109,7 @@ export default function About() {
                 {/* Bio con acento lateral */}
                 <div className="space-y-2.5 border-l-2 border-neon-pink/40 pl-4">
                   {about.paragraphs.map((p, i) => (
-                    <p key={i} className="text-[15px] leading-snug text-white/75">
+                    <p key={i} className="text-[15px] leading-relaxed text-white/75">
                       {p}
                     </p>
                   ))}
