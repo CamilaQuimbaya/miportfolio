@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 type Props = { className?: string; happy?: boolean };
 
@@ -17,6 +17,12 @@ export default function CatLogo({ className, happy = false }: Props) {
   const rightPupilRef = useRef<SVGGElement>(null);
   const [blinking, setBlinking] = useState(false);
   const [hovered, setHovered] = useState(false);
+
+  // IDs únicos por instancia — evita colisiones de gradientes cuando hay
+  // varios gatitos en la página (si otro se oculta, la carita no se queda sin relleno).
+  const uid = useId().replace(/:/g, "");
+  const furId = `catFur-${uid}`;
+  const headId = `catHead-${uid}`;
 
   // 👀 Los ojos siguen al cursor.
   // Solo calcula al mover el mouse (throttle con 1 rAF) y suaviza con CSS,
@@ -93,11 +99,11 @@ export default function CatLogo({ className, happy = false }: Props) {
       onPointerLeave={() => setHovered(false)}
     >
       <defs>
-        <linearGradient id="catFur" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={furId} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#ff8fe0" />
           <stop offset="100%" stopColor="#c084fc" />
         </linearGradient>
-        <linearGradient id="catHead" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={headId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#fff0fb" />
           <stop offset="100%" stopColor="#ffd6f5" />
         </linearGradient>
@@ -112,7 +118,7 @@ export default function CatLogo({ className, happy = false }: Props) {
           transition: "transform 0.3s ease",
         }}
       >
-        <path d="M14 22 L18 8 L30 18 Z" fill="url(#catFur)" />
+        <path d="M14 22 L18 8 L30 18 Z" fill={`url(#${furId})`} />
         <path d="M17 18 L19 11 L25 17 Z" fill="#ff5fd2" opacity="0.8" />
       </g>
       <g
@@ -123,12 +129,12 @@ export default function CatLogo({ className, happy = false }: Props) {
           transition: "transform 0.3s ease",
         }}
       >
-        <path d="M50 22 L46 8 L34 18 Z" fill="url(#catFur)" />
+        <path d="M50 22 L46 8 L34 18 Z" fill={`url(#${furId})`} />
         <path d="M47 18 L45 11 L39 17 Z" fill="#ff5fd2" opacity="0.8" />
       </g>
 
       {/* Cabeza */}
-      <circle cx="32" cy="34" r="20" fill="url(#catHead)" stroke="#ff5fd2" strokeWidth="1.5" />
+      <circle cx="32" cy="34" r="20" fill={`url(#${headId})`} stroke="#ff5fd2" strokeWidth="1.5" />
 
       {/* Mejillas (laten; se agrandan al hover) */}
       <circle cx="20" cy="38" r={show ? 5 : 4} fill="#ff8fe0" opacity={show ? 0.9 : 0.7} style={{ transition: "all 0.3s ease" }}>

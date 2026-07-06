@@ -1,6 +1,8 @@
 import Background from "@/components/Background";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
+import MobileBrand from "@/components/MobileBrand";
+import MobileLangToggle from "@/components/MobileLangToggle";
 import ViewStage from "@/components/ViewStage";
 import MusicPlayer from "@/components/MusicPlayer";
 import CatRadialNav from "@/components/CatRadialNav";
@@ -18,6 +20,8 @@ export default function Home() {
       <Background />
       <CustomCursor />
       <Navbar />
+      <MobileBrand />
+      <MobileLangToggle />
       <ViewStage />
       <MusicPlayer />
       <CatRadialNav />

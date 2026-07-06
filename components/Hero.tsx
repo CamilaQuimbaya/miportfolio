@@ -40,7 +40,7 @@ export default function Hero() {
       id="inicio"
       ref={ref}
       onMouseMove={handleMouse}
-      className="relative min-h-0 flex-1 overflow-hidden px-6 pb-16 pt-28 sm:pt-24 lg:flex lg:items-center"
+      className="relative px-6 pb-16 pt-16 sm:pt-24 lg:flex lg:min-h-0 lg:flex-1 lg:items-center lg:overflow-hidden"
     >
       {/* ===== Decoración de fondo (centrada tras la foto) ===== */}
       <motion.div
@@ -77,7 +77,7 @@ export default function Hero() {
           className="relative h-full w-full"
         >
           <Image
-            src="/profile-hero.webp?v=3"
+            src="/profile-hero.webp?v=7"
             alt={profile.name}
             fill
             priority
@@ -150,7 +150,7 @@ export default function Hero() {
           <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-neon-pink/40" />
           <div className="absolute -inset-1 animate-[spin_22s_linear_infinite_reverse] rounded-full border border-neon-cyan/20" />
           <Image
-            src="/profile-hero.webp?v=3"
+            src="/profile-hero.webp?v=7"
             alt={profile.name}
             width={300}
             height={424}

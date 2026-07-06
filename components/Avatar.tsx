@@ -9,7 +9,15 @@ import CatLogo from "./CatLogo";
  * Si todavía no existe, cae elegantemente al gatito kawaii.
  * Para cambiarla: reemplaza  public/profile.webp
  */
-export default function Avatar({ className = "" }: { className?: string }) {
+export default function Avatar({
+  className = "",
+  src = "/profile.webp",
+  contain = false,
+}: {
+  className?: string;
+  src?: string;
+  contain?: boolean;
+}) {
   const [error, setError] = useState(false);
 
   if (error) {
@@ -23,13 +31,23 @@ export default function Avatar({ className = "" }: { className?: string }) {
   }
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div className={`relative ${contain ? "" : "overflow-hidden"} ${className}`}>
       <Image
-        src="/profile.webp"
+        src={src}
         alt="Camila Quimbaya"
         fill
         sizes="(max-width: 768px) 85vw, 400px"
-        className="object-cover object-center"
+        className={contain ? "object-contain object-bottom" : "object-cover object-center"}
+        style={
+          contain
+            ? {
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, #000 62%, transparent 96%)",
+                maskImage:
+                  "linear-gradient(to bottom, #000 62%, transparent 96%)",
+              }
+            : undefined
+        }
         onError={() => setError(true)}
       />
     </div>

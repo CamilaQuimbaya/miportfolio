@@ -22,7 +22,7 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"
+      className="fixed inset-x-0 top-0 z-50 hidden justify-center px-4 pt-4 md:flex"
     >
       <nav className="flex w-full max-w-5xl items-center justify-between rounded-2xl glass-strong px-5 py-3 shadow-glass">
         <button onClick={() => nav("#inicio")} className="group flex items-center gap-2">
