@@ -77,6 +77,52 @@ body {
     color: transparent;
   }
 
+  /* Texto en contorno neón (hueco) — look editorial/cyberpunk */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.6px rgba(255, 79, 216, 0.9);
+    text-shadow: 0 0 26px rgba(255, 79, 216, 0.35), 0 0 60px rgba(168, 85, 247, 0.25);
+  }
+  .text-outline-cyan {
+    color: transparent;
+    -webkit-text-stroke: 1.4px rgba(34, 211, 238, 0.85);
+    text-shadow: 0 0 24px rgba(34, 211, 238, 0.3);
+  }
+
+  /* Subrayado decorativo con gradiente neón */
+  .title-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .title-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35em;
+    height: 4px;
+    width: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff4fd8, #a855f7, #22d3ee);
+    box-shadow: 0 0 18px rgba(255, 79, 216, 0.5);
+  }
+
+  /* Cursor de terminal que parpadea */
+  .caret-blink::after {
+    content: "";
+    display: inline-block;
+    width: 0.09em;
+    height: 0.9em;
+    margin-left: 0.12em;
+    vertical-align: -0.05em;
+    background: #22d3ee;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.8);
+    animation: caret 1.05s step-end infinite;
+  }
+  @keyframes caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
   /* Borde con gradiente (truco mask) */
   .gradient-border {
     position: relative;

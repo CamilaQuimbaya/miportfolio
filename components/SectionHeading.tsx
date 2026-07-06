@@ -15,8 +15,10 @@ export default function SectionHeading({ kicker, title, subtitle }: Props) {
         </span>
       </Reveal>
       <Reveal delay={0.05}>
-        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-          {title}
+        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <span className="title-underline text-gradient glow-text animate-gradient-x">
+            {title}
+          </span>
         </h2>
       </Reveal>
       {subtitle && (
